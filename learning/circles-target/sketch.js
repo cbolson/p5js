@@ -1,5 +1,6 @@
 const rad = 50;
 let total, dim, maxCircles;
+const allowLoop = false; // if true the counters will reset to outer and start again from the outer circle
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -37,9 +38,12 @@ function draw() {
 
   // stop when we reach the calculated max for window size
   if (total <= 0) {
-    noLoop();
-    // total = maxCircles;
-    //dim = maxCircles * rad;
+    if (allowLoop) {
+      total = maxCircles;
+      dim = maxCircles * rad;
+    } else {
+      noLoop();
+    }
   }
   //noLoop();
   // this will draw them all in one go (don't forget the noLoop)
