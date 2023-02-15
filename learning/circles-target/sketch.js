@@ -1,16 +1,18 @@
-let total = 0;
 const rad = 50;
-let dim;
+let total, dim, maxCircles;
 
-let maxCircles;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(0);
+  // calculate max number of circles that will fit in the canvas (minus a small margin)
   maxCircles = float((height - 100) / rad);
-  console.log("max: ", maxCircles);
-
+  // we are drawing the circles from the largest to smallest to that they don't get covered up
+  // set total to max then count down in loop
   total = maxCircles;
+  // set diameter (it is actually still the radius) of first circle to max possible size
   dim = maxCircles * rad;
+
+  // slow it down
   frameRate(12);
 }
 
